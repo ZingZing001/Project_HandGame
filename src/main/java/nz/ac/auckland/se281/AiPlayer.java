@@ -5,8 +5,10 @@ public class AiPlayer implements Player {
   private GameStrategy strategy;
   private int playerConsecutiveWins;
   private String aiInput;
+  private Game game;
 
-  public AiPlayer(GameStrategy strategy) {
+  public AiPlayer(GameStrategy strategy, Game game) {
+    this.game = game;
     name = "HAL-9000";
     playerConsecutiveWins = 0;
     this.strategy = strategy;
@@ -19,7 +21,7 @@ public class AiPlayer implements Player {
   public void incrementPlayerWins() {
     playerConsecutiveWins++;
     if (playerConsecutiveWins >= 3 && this.strategy instanceof RandomStrategy) {
-      updateStrategy(new TopStrategy());
+      updateStrategy(new TopStrategy(game));
     }
   }
 

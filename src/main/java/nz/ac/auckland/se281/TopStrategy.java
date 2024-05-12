@@ -1,14 +1,20 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
 import nz.ac.auckland.se281.Main.Choice;
 
-public class TopStrategy extends Game implements GameStrategy {
+public class TopStrategy implements GameStrategy {
   private int OddSum;
   private int EvenSum;
+  ArrayList<Choice> choices;
+
+  public TopStrategy(Game game) {
+    choices = game.getUserChoices();
+  }
 
   @Override
   public String excuteStrategy() {
-    for (Choice choice : userChoices) {
+    for (Choice choice : choices) {
       if (choice == Choice.ODD) {
         OddSum++;
       } else {

@@ -12,7 +12,7 @@ public class Game {
   protected String aiInput;
   protected int sum;
   protected List<RoundResult> gameHistory = new ArrayList<>();
-  protected List<Choice> userChoices = new ArrayList<>();
+  protected ArrayList<Choice> userChoices = new ArrayList<>();
   private final String aiName = "HAL-9000";
   private GameController game;
   private HumanPlayer user;
@@ -31,7 +31,7 @@ public class Game {
     game.resetGame();
     name = options[0];
     user = new HumanPlayer(name);
-    playerFactory = new PlayerFactory();
+    playerFactory = new PlayerFactory(game);
     ai = playerFactory.creatPlayer(difficulty);
     user.Greet();
   }
@@ -50,7 +50,7 @@ public class Game {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "ODD", aiName);
     } else {
       if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
-        ai.updateStrategy(new TopStrategy());
+        ai.updateStrategy(new TopStrategy(game));
       } else if (difficulty == Difficulty.HARD) {
         ai.incrementPlayerWins();
       } else {
@@ -63,4 +63,8 @@ public class Game {
   public void endGame() {}
 
   public void showStats() {}
+
+  public ArrayList<Choice> getUserChoices() {
+    return this.userChoices;
+  }
 }
