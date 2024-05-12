@@ -11,6 +11,8 @@ public class Game {
   protected String userInput;
   protected String aiInput;
   protected int sum;
+  protected List<RoundResult> gameHistory = new ArrayList<>();
+  protected List<Choice> userChoices = new ArrayList<>();
   private final String aiName = "HAL-9000";
   private GameController game;
   private HumanPlayer user;
@@ -18,7 +20,6 @@ public class Game {
   private PlayerFactory playerFactory;
   private boolean result;
   private Choice choice;
-  protected List<RoundResult> gameHistory = new ArrayList<>();
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     this.choice = choice;

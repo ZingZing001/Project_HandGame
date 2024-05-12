@@ -1,6 +1,6 @@
 package nz.ac.auckland.se281;
 
-public class RoundResult {
+public class RoundResult extends Game {
   private String humanMove;
   private String aiMove;
   private boolean humanWon;
