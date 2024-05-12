@@ -5,10 +5,12 @@ import nz.ac.auckland.se281.Main.Difficulty;
 
 /** This class represents the Game is the main entry point. */
 public class Game {
+  private String name;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
-    // the first element of options[0]; is the name of the player
-    MessageCli.WELCOME_PLAYER.printMessage(options[0]);
+    name = options[0];
+    HumanPlayer name = new HumanPlayer(this.name);
+    name.Greet();
   }
 
   public void play() {}
