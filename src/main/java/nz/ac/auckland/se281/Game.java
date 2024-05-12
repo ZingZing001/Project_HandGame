@@ -39,6 +39,7 @@ public class Game {
     } else if (!result && Utils.isOdd(sum)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "ODD", aiName);
     } else {
+      ai.incrementPlayerWins();
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(
           String.valueOf(sum), String.valueOf(choice), name);
     }

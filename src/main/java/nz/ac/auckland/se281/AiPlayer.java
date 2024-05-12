@@ -15,7 +15,7 @@ public class AiPlayer implements Player {
     this.strategy = strategy;
   }
 
-  public void incrementWins() {
+  public void incrementPlayerWins() {
     playerConsecutiveWins++;
     if (playerConsecutiveWins >= 3 && this.strategy instanceof RandomStrategy) {
       updateStrategy(new TopStrategy());
