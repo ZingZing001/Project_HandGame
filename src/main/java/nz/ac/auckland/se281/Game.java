@@ -18,7 +18,7 @@ public class Game {
     name = options[0];
     user = new HumanPlayer(name);
     playerFactory = new PlayerFactory();
-    ai = new AiPlayer(playerFactory.creatPlayer(difficulty));
+    ai = playerFactory.creatPlayer(difficulty);
     user.Greet();
   }
 
