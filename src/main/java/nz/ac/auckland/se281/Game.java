@@ -7,6 +7,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Game {
   private String name;
   private String userInput;
+  private String aiInput;
   private GameController game;
   private HumanPlayer user;
   private AiPlayer ai;
@@ -25,6 +26,7 @@ public class Game {
   public void play() {
     game.startNewGame();
     userInput = user.makeMove();
+    aiInput = ai.makeMove();
   }
 
   public void endGame() {}
