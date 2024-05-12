@@ -10,9 +10,9 @@ public class PlayerFactory {
       case MEDIUM:
         return new AiPlayer(new RandomStrategy());
       case HARD:
-        return new AiPlayer(new RandomStrategy());
-      default:
         return new AiPlayer(new TopStrategy());
+      default:
+        return new AiPlayer(new RandomStrategy());
     }
   }
 }

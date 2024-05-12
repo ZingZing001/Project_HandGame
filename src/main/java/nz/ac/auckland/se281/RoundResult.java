@@ -1,29 +1,29 @@
 package nz.ac.auckland.se281;
 
 public class RoundResult {
-  private int humanMove;
-  private int aiMove;
+  private String humanMove;
+  private String aiMove;
   private boolean humanWon;
 
-  public RoundResult(int humanMove, int aiMove, boolean humanWon) {
+  public RoundResult(String humanMove, String aiMove, boolean humanWon) {
     this.humanMove = humanMove;
     this.aiMove = aiMove;
     this.humanWon = humanWon;
   }
 
-  public int getHumanMove() {
+  public String getHumanMove() {
     return humanMove;
   }
 
-  public void setHumanMove(int humanMove) {
+  public void setHumanMove(String humanMove) {
     this.humanMove = humanMove;
   }
 
-  public int getAiMove() {
+  public String getAiMove() {
     return aiMove;
   }
 
-  public void setAiMove(int aiMove) {
+  public void setAiMove(String aiMove) {
     this.aiMove = aiMove;
   }
 

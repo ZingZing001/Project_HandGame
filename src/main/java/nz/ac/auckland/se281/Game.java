@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
 import java.util.List;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
@@ -17,9 +18,10 @@ public class Game {
   private PlayerFactory playerFactory;
   private boolean result;
   private Choice choice;
-  private List<RoundResult> gameHistory;
+  protected List<RoundResult> gameHistory;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
+    this.gameHistory = new ArrayList<>();
     this.choice = choice;
     game = new GameController();
     game.resetGame();
@@ -36,6 +38,7 @@ public class Game {
     aiInput = ai.makeMove();
     sum = Integer.parseInt(userInput) + Integer.parseInt(aiInput);
     result = game.PlayerWins(userInput, aiInput, choice);
+    game.recordResult(userInput, aiInput, result);
     if (!result && Utils.isEven(sum)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "EVEN", aiName);
     } else if (!result && Utils.isOdd(sum)) {

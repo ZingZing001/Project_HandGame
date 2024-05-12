@@ -3,6 +3,9 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Main.Choice;
 
 public class GameController extends Game {
+  private String userInput;
+  private String aiInput;
+  private Boolean result;
   private int totalGamePlayed;
 
   public GameController() {
@@ -23,6 +26,14 @@ public class GameController extends Game {
     } else {
       return false;
     }
+  }
+
+  public void recordResult(String userInput, String aiInput, Boolean result) {
+    this.userInput = userInput;
+    this.aiInput = aiInput;
+    this.result = result;
+    RoundResult roundHistory = new RoundResult(userInput, aiInput, result);
+    gameHistory.add(roundHistory);
   }
 
   public void startNewGame() {
