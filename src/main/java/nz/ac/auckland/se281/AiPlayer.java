@@ -1,10 +1,13 @@
 package nz.ac.auckland.se281;
 
 public class AiPlayer implements Player {
+  private final String name;
   private GameStrategy strategy;
   private int playerConsecutiveWins;
+  private String aiInput;
 
   public AiPlayer(GameStrategy strategy) {
+    name = "HAL-9000";
     this.strategy = strategy;
   }
 
@@ -21,6 +24,8 @@ public class AiPlayer implements Player {
 
   @Override
   public String makeMove() {
-    return strategy.excuteStrategy();
+    aiInput = strategy.excuteStrategy();
+    MessageCli.PRINT_INFO_HAND.printMessage(name, aiInput);
+    return aiInput;
   }
 }

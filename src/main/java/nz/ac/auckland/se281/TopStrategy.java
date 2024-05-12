@@ -3,7 +3,7 @@ package nz.ac.auckland.se281;
 public class TopStrategy implements GameStrategy {
 
   @Override
-  public int excuteStrategy() {
-    return -1;
+  public String excuteStrategy() {
+    return "-1";
   }
 }
