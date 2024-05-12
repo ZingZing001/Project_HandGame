@@ -26,20 +26,15 @@ public class TopStrategy implements GameStrategy {
     }
     if (OddSum > EvenSum && gameChoice == Choice.ODD) {
       return Utils.getRandomOddNumber() + "";
-    } else if (OddSum < EvenSum && gameChoice == Choice.EVEN) {
-      getRan = Utils.getRandomEvenNumber();
-      while (getRan == 0) {
-        getRan = Utils.getRandomEvenNumber();
-      }
-      return getRan + "";
+    } else if (EvenSum > OddSum && gameChoice == Choice.EVEN) {
+      return Utils.getRandomOddNumber() + "";
     } else if (OddSum > EvenSum && gameChoice == Choice.EVEN) {
       getRan = Utils.getRandomEvenNumber();
       while (getRan == 0) {
         getRan = Utils.getRandomEvenNumber();
       }
       return getRan + "";
-
-    } else if (OddSum < EvenSum && gameChoice == Choice.ODD) {
+    } else if (EvenSum > OddSum && gameChoice == Choice.ODD) {
       getRan = Utils.getRandomEvenNumber();
       while (getRan == 0) {
         getRan = Utils.getRandomEvenNumber();
