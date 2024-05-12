@@ -43,7 +43,12 @@ public class Game {
     sum = Integer.parseInt(userInput) + Integer.parseInt(aiInput);
     result = game.PlayerWins(userInput, aiInput, choice);
     game.recordResult(userInput, aiInput, result);
-    userChoices.add(choice);
+    if (Utils.isEven(Integer.parseInt(userInput))) {
+      userChoices.add(Choice.EVEN);
+    } else {
+      userChoices.add(Choice.ODD);
+    }
+
     if (!result && Utils.isEven(sum)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "EVEN", aiName);
     } else if (!result && Utils.isOdd(sum)) {
