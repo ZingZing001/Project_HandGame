@@ -4,9 +4,6 @@ import nz.ac.auckland.se281.Main.Choice;
 
 public class GameController extends Game {
   private int totalGamePlayed;
-  private Boolean result;
-  private Boolean isEven;
-  private Boolean isOdd;
 
   public GameController() {
     this.totalGamePlayed = 0;
@@ -35,15 +32,6 @@ public class GameController extends Game {
 
   public void resetGame() {
     totalGamePlayed = 0;
-  }
-
-  public void endGame(Boolean result) {
-    this.result = result;
-    if (result) {
-
-    } else {
-
-    }
   }
 
   public String getTotalGamesPlayed() {
