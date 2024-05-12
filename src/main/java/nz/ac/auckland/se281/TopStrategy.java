@@ -6,10 +6,13 @@ import nz.ac.auckland.se281.Main.Choice;
 public class TopStrategy implements GameStrategy {
   private int OddSum;
   private int EvenSum;
-  ArrayList<Choice> choices;
+  private ArrayList<Choice> choices;
+  private Choice gameChoice;
+  private int getRan;
 
-  public TopStrategy(ArrayList<Choice> userChoices) {
+  public TopStrategy(ArrayList<Choice> userChoices, Choice gameChoice) {
     this.choices = userChoices;
+    this.gameChoice = gameChoice;
   }
 
   @Override
@@ -21,12 +24,29 @@ public class TopStrategy implements GameStrategy {
         EvenSum++;
       }
     }
-    if (OddSum > EvenSum) {
-      return Utils.getRandomEvenNumber() + "";
-    } else if (OddSum == EvenSum) {
-      return Utils.getRandomNumberRange(0, 5) + "";
-    } else {
+    if (OddSum > EvenSum && gameChoice == Choice.ODD) {
       return Utils.getRandomOddNumber() + "";
+    } else if (OddSum < EvenSum && gameChoice == Choice.EVEN) {
+      getRan = Utils.getRandomEvenNumber();
+      while (getRan == 0) {
+        getRan = Utils.getRandomEvenNumber();
+      }
+      return getRan + "";
+    } else if (OddSum > EvenSum && gameChoice == Choice.EVEN) {
+      getRan = Utils.getRandomEvenNumber();
+      while (getRan == 0) {
+        getRan = Utils.getRandomEvenNumber();
+      }
+      return getRan + "";
+
+    } else if (OddSum < EvenSum && gameChoice == Choice.ODD) {
+      getRan = Utils.getRandomEvenNumber();
+      while (getRan == 0) {
+        getRan = Utils.getRandomEvenNumber();
+      }
+      return getRan + "";
+    } else {
+      return Utils.getRandomNumberRange(0, 5) + "";
     }
   }
 }
