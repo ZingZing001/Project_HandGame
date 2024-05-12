@@ -22,6 +22,8 @@ public class Game {
   private Choice choice;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
+    gameHistory = new ArrayList<>();
+    userChoices = new ArrayList<>();
     this.choice = choice;
     game = new GameController();
     game.resetGame();
@@ -39,6 +41,7 @@ public class Game {
     sum = Integer.parseInt(userInput) + Integer.parseInt(aiInput);
     result = game.PlayerWins(userInput, aiInput, choice);
     game.recordResult(userInput, aiInput, result);
+    userChoices.add(choice);
     if (!result && Utils.isEven(sum)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "EVEN", aiName);
     } else if (!result && Utils.isOdd(sum)) {
