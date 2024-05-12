@@ -15,6 +15,7 @@ public class GameController extends Game {
   public boolean PlayerWins(String userInput, String aiInput, Choice choice) {
     this.userInput = userInput;
     this.aiInput = aiInput;
+    sum = Integer.parseInt(userInput) + Integer.parseInt(aiInput);
 
     if (choice == Choice.ODD && Utils.isOdd(sum)) {
       return true;
