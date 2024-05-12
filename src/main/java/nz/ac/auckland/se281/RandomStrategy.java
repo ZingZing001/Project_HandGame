@@ -6,7 +6,7 @@ public class RandomStrategy implements GameStrategy {
 
   @Override
   public int excuteStrategy() {
-    random = Utils.random.nextInt(5);
-    return -1;
+    random = Utils.getRandomNumberRange(0, 5);
+    return random;
   }
 }

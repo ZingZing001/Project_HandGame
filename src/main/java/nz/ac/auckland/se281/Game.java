@@ -9,12 +9,16 @@ public class Game {
   private String userInput;
   private GameController game;
   private HumanPlayer user;
+  private AiPlayer ai;
+  private PlayerFactory playerFactory;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     game = new GameController();
     game.resetGame();
     name = options[0];
     user = new HumanPlayer(name);
+    playerFactory = new PlayerFactory();
+    ai = new AiPlayer(playerFactory.creatPlayer(difficulty));
     user.Greet();
   }
 
