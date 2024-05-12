@@ -8,8 +8,8 @@ public class TopStrategy implements GameStrategy {
   private int EvenSum;
   ArrayList<Choice> choices;
 
-  public TopStrategy(Game game) {
-    choices = game.getUserChoices();
+  public TopStrategy(ArrayList<Choice> userChoices) {
+    this.choices = userChoices;
   }
 
   @Override

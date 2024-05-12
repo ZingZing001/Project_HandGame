@@ -50,7 +50,7 @@ public class Game {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "ODD", aiName);
     } else {
       if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
-        ai.updateStrategy(new TopStrategy(game));
+        ai.updateStrategy(new TopStrategy(userChoices));
       } else if (difficulty == Difficulty.HARD) {
         ai.incrementPlayerWins();
       } else {
@@ -63,8 +63,4 @@ public class Game {
   public void endGame() {}
 
   public void showStats() {}
-
-  public ArrayList<Choice> getUserChoices() {
-    return this.userChoices;
-  }
 }
