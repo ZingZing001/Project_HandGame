@@ -12,10 +12,10 @@ public class Game {
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     game = new GameController();
+    game.resetGame();
     name = options[0];
     user = new HumanPlayer(name);
     user.Greet();
-    game.resetGame();
   }
 
   public void play() {
