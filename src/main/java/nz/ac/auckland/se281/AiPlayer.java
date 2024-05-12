@@ -8,6 +8,7 @@ public class AiPlayer implements Player {
 
   public AiPlayer(GameStrategy strategy) {
     name = "HAL-9000";
+    playerConsecutiveWins = 0;
     this.strategy = strategy;
   }
 

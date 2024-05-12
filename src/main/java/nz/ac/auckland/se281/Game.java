@@ -20,11 +20,13 @@ public class Game {
   private PlayerFactory playerFactory;
   private boolean result;
   private Choice choice;
+  private Difficulty difficulty;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     gameHistory = new ArrayList<>();
     userChoices = new ArrayList<>();
     this.choice = choice;
+    this.difficulty = difficulty;
     game = new GameController();
     game.resetGame();
     name = options[0];
@@ -47,9 +49,14 @@ public class Game {
     } else if (!result && Utils.isOdd(sum)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "ODD", aiName);
     } else {
-      ai.incrementPlayerWins();
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage(
-          String.valueOf(sum), String.valueOf(choice), name);
+      if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
+        ai.updateStrategy(new TopStrategy());
+      } else if (difficulty == Difficulty.HARD) {
+        ai.incrementPlayerWins();
+      } else {
+        MessageCli.PRINT_OUTCOME_ROUND.printMessage(
+            String.valueOf(sum), String.valueOf(choice), name);
+      }
     }
   }
 
