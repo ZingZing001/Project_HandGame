@@ -2,7 +2,7 @@ package nz.ac.auckland.se281;
 
 public class GameController {
   private int totalGamePlayed;
-  private int userInput;
+  private String userInput;
 
   public GameController() {
     this.totalGamePlayed = 0;
@@ -13,10 +13,9 @@ public class GameController {
     MessageCli.START_ROUND.printMessage(totalGamePlayed + "");
   }
 
-  public void giveFinger(){
+  public void giveFinger() {
     MessageCli.ASK_INPUT.printMessage();
-    userInput = Utils.scanner.nextInt();
-    
+    userInput = Utils.scanner.nextLine();
   }
 
   public String getTotalGamesPlayed() {
