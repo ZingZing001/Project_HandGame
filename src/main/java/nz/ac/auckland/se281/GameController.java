@@ -6,21 +6,23 @@ public class GameController {
   private int totalGamePlayed;
   private String userInput;
   private String aiInput;
+  private int sum = 0;
 
   public GameController() {
     this.totalGamePlayed = 0;
   }
 
-  public boolean whoWins(String userInput, String aiInput, Choice choice) {
+  public boolean PlayerWins(String userInput, String aiInput, Choice choice) {
     this.userInput = userInput;
     this.aiInput = aiInput;
-    if (choice == Choice.ODD) {
-
+    sum = Integer.parseInt(userInput) + Integer.parseInt(aiInput);
+    if (choice == Choice.ODD && Utils.isOdd(sum)) {
+      return true;
+    } else if (choice == Choice.EVEN && Utils.isEven(sum)) {
+      return true;
     } else {
-
+      return false;
     }
-
-    return true;
   }
 
   public void startNewGame() {
