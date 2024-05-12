@@ -8,18 +8,19 @@ public class Game {
   private String name;
   private String userInput;
   private GameController game = new GameController();
+  private HumanPlayer user;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
-    game.resetGame();
     name = options[0];
-    HumanPlayer name = new HumanPlayer(this.name);
-    name.Greet();
+    user = new HumanPlayer(name);
+    user.Greet();
+    game.resetGame();
   }
 
   public void play() {
     game.startNewGame();
-    userInput = game.userFinger();
-    MessageCli.PRINT_INFO_HAND.printMessage(name,userInput);
+    userInput = user.makeMove();
+    MessageCli.PRINT_INFO_HAND.printMessage(name, userInput);
   }
 
   public void endGame() {}

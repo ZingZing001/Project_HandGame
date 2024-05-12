@@ -2,6 +2,8 @@ package nz.ac.auckland.se281;
 
 public class HumanPlayer implements Player {
   private String name;
+  private String userInput;
+  private InputHandler input = new InputHandler();
 
   public HumanPlayer(String name) {
     this.name = name;
@@ -12,7 +14,9 @@ public class HumanPlayer implements Player {
   }
 
   @Override
-  public int makeMove() {
-    return -1;
+  public String makeMove() {
+    MessageCli.ASK_INPUT.printMessage();
+    userInput = input.propmtForFirstCharacter();
+    return userInput;
   }
 }
