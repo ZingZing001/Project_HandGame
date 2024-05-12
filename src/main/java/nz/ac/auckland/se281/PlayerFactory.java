@@ -6,7 +6,7 @@ public class PlayerFactory {
       case "easy":
         return new AiPlayer(new RandomStrategy());
       default:
-        break;
+        return new AiPlayer(new RandomStrategy());
     }
   }
 }

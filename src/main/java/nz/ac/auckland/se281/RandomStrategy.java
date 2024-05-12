@@ -1,3 +1,9 @@
 package nz.ac.auckland.se281;
 
-public class RandomStrategy {}
+public class RandomStrategy implements GameStrategy {
+
+  @Override
+  public int excuteStrategy() {
+    return -1;
+  }
+}
