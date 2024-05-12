@@ -3,6 +3,7 @@ package nz.ac.auckland.se281;
 public class GameController {
   private int totalGamePlayed;
   private String userInput;
+  private InputHandler input = new InputHandler();
 
   public GameController() {
     this.totalGamePlayed = 0;
@@ -15,7 +16,8 @@ public class GameController {
 
   public void giveFinger() {
     MessageCli.ASK_INPUT.printMessage();
-    userInput = Utils.scanner.nextLine();
+    userInput = input.propmtForFirstCharacter();
+    
   }
 
   public String getTotalGamesPlayed() {
