@@ -5,9 +5,9 @@ import nz.ac.auckland.se281.Main.Difficulty;
 
 /** This class represents the Game is the main entry point. */
 public class Game {
-  private String name;
-  private String userInput;
-  private String aiInput;
+  protected String name;
+  protected String userInput;
+  protected String aiInput;
   private GameController game;
   private HumanPlayer user;
   private AiPlayer ai;
@@ -30,7 +30,7 @@ public class Game {
     game.startNewGame();
     userInput = user.makeMove();
     aiInput = ai.makeMove();
-    result = game.whoWins(userInput, aiInput, choice);
+    result = game.PlayerWins(userInput, aiInput, choice);
   }
 
   public void endGame() {}
