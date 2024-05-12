@@ -22,6 +22,8 @@ public class TopStrategy extends Game implements GameStrategy {
     }
     if (OddSum > EvenSum) {
       return Utils.getRandomEvenNumber() + "";
+    } else if (OddSum == EvenSum) {
+      return Utils.getRandomNumberRange(0, 5) + "";
     } else {
       return Utils.getRandomOddNumber() + "";
     }
