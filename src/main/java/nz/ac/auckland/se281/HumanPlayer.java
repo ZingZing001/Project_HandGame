@@ -8,7 +8,7 @@ public class HumanPlayer implements Player {
   }
 
   public void Greet() {
-    MessageCli.WELCOME_PLAYER.printMessage(null);
+    MessageCli.WELCOME_PLAYER.printMessage(name);
   }
 
   @Override
