@@ -18,10 +18,9 @@ public class Game {
   private PlayerFactory playerFactory;
   private boolean result;
   private Choice choice;
-  protected List<RoundResult> gameHistory;
+  protected List<RoundResult> gameHistory = new ArrayList<>();
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
-    this.gameHistory = new ArrayList<>();
     this.choice = choice;
     game = new GameController();
     game.resetGame();
