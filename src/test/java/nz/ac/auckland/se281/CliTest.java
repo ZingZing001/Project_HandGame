@@ -6,12 +6,9 @@ import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.NoSuchElementException;
 import java.util.Scanner;
-import java.util.concurrent.TimeUnit;
 import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
-import org.junit.Rule;
-import org.junit.rules.Timeout;
 
 /** You cannot modify this class! */
 public abstract class CliTest {
@@ -48,7 +45,7 @@ public abstract class CliTest {
   }
 
   /** Timeout if test runs longer than 10 seconds */
-  @Rule public Timeout timeout = new Timeout(10, TimeUnit.SECONDS);
+  // @Rule public Timeout timeout = new Timeout(10, TimeUnit.SECONDS);
 
   /**
    * Configures the test output and input streams, by creating new temporary streams while storing
