@@ -3,16 +3,16 @@ package nz.ac.auckland.se281;
 public class GameController {
   private int totalGamePlayed;
 
-  public GameController(){
+  public GameController() {
     this.totalGamePlayed = 0;
   }
 
-  public void startNewGame(){
+  public void startNewGame() {
     totalGamePlayed++;
+    MessageCli.START_ROUND.printMessage(totalGamePlayed + "");
   }
 
-  public int getTotalGamesPlayed(){
-    return totalGamePlayed;
+  public String getTotalGamesPlayed() {
+    return "" + totalGamePlayed;
   }
-  
 }

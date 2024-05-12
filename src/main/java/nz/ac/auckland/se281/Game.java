@@ -7,6 +7,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Game {
   private String name;
   private GameController game = new GameController();
+  private String totalGamePlayed;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     name = options[0];
