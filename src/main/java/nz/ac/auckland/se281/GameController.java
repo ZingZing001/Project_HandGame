@@ -14,10 +14,13 @@ public class GameController {
     MessageCli.START_ROUND.printMessage(totalGamePlayed + "");
   }
 
+  public void resetGame() {
+    totalGamePlayed = 0;
+  }
+
   public void giveFinger() {
     MessageCli.ASK_INPUT.printMessage();
     userInput = input.propmtForFirstCharacter();
-    
   }
 
   public String getTotalGamesPlayed() {

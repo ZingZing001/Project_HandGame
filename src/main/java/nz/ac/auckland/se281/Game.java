@@ -7,9 +7,9 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Game {
   private String name;
   private GameController game = new GameController();
-  private int userInput;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
+    game.resetGame();
     name = options[0];
     HumanPlayer name = new HumanPlayer(this.name);
     name.Greet();
