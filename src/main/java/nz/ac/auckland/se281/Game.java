@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+import java.util.List;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 
@@ -16,6 +17,7 @@ public class Game {
   private PlayerFactory playerFactory;
   private boolean result;
   private Choice choice;
+  private List<RoundResult> gameHistory;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     this.choice = choice;
