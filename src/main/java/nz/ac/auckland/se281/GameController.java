@@ -18,9 +18,10 @@ public class GameController {
     totalGamePlayed = 0;
   }
 
-  public void giveFinger() {
+  public String userFinger() {
     MessageCli.ASK_INPUT.printMessage();
     userInput = input.propmtForFirstCharacter();
+    return userInput;
   }
 
   public String getTotalGamesPlayed() {

@@ -6,6 +6,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 /** This class represents the Game is the main entry point. */
 public class Game {
   private String name;
+  private String userInput;
   private GameController game = new GameController();
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
@@ -17,7 +18,8 @@ public class Game {
 
   public void play() {
     game.startNewGame();
-    game.giveFinger();
+    userInput = game.userFinger();
+    MessageCli.PRINT_INFO_HAND.printMessage(name,userInput);
   }
 
   public void endGame() {}
