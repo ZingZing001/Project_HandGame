@@ -17,6 +17,7 @@ public class HumanPlayer implements Player {
   public String makeMove() {
     MessageCli.ASK_INPUT.printMessage();
     userInput = input.propmtForFirstCharacter();
+    MessageCli.PRINT_INFO_HAND.printMessage(name, userInput);
     return userInput;
   }
 }

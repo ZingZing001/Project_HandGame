@@ -7,10 +7,11 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Game {
   private String name;
   private String userInput;
-  private GameController game = new GameController();
+  private GameController game;
   private HumanPlayer user;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
+    game = new GameController();
     name = options[0];
     user = new HumanPlayer(name);
     user.Greet();
@@ -20,7 +21,6 @@ public class Game {
   public void play() {
     game.startNewGame();
     userInput = user.makeMove();
-    MessageCli.PRINT_INFO_HAND.printMessage(name, userInput);
   }
 
   public void endGame() {}
