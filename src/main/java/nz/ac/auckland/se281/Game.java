@@ -6,6 +6,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 /** This class represents the Game is the main entry point. */
 public class Game {
   private String name;
+  private GameController game = new GameController();
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     name = options[0];
@@ -13,7 +14,9 @@ public class Game {
     name.Greet();
   }
 
-  public void play() {}
+  public void play() {
+    game.startNewGame();
+  }
 
   public void endGame() {}
 
