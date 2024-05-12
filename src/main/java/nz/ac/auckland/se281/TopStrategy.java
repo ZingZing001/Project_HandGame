@@ -6,11 +6,6 @@ public class TopStrategy extends Game implements GameStrategy {
   private int OddSum;
   private int EvenSum;
 
-  public TopStrategy() {
-    OddSum = 0;
-    EvenSum = 0;
-  }
-
   @Override
   public String excuteStrategy() {
     for (Choice choice : userChoices) {
