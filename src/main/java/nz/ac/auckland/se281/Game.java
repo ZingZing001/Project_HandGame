@@ -38,6 +38,9 @@ public class Game {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "EVEN", aiName);
     } else if (!result && Utils.isOdd(sum)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "ODD", aiName);
+    } else {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(
+          String.valueOf(sum), String.valueOf(choice), name);
     }
   }
 
