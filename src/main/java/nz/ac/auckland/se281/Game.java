@@ -51,16 +51,19 @@ public class Game {
 
     if (!result && Utils.isEven(sum)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "EVEN", aiName);
-    } else if (!result && Utils.isOdd(sum)) {
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "ODD", aiName);
-    } else {
       if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
         ai.updateStrategy(new TopStrategy(userChoices));
-      } else if (difficulty == Difficulty.HARD) {
-        ai.incrementPlayerWins();
-      } else {
-        MessageCli.PRINT_OUTCOME_ROUND.printMessage(
-            String.valueOf(sum), String.valueOf(choice), name);
+      }
+    } else if (!result && Utils.isOdd(sum)) {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "ODD", aiName);
+      if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
+        ai.updateStrategy(new TopStrategy(userChoices));
+      }
+    } else {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(
+          String.valueOf(sum), String.valueOf(choice), name);
+      if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
+        ai.updateStrategy(new TopStrategy(userChoices));
       }
     }
   }
