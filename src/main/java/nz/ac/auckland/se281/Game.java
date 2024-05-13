@@ -49,7 +49,7 @@ public class Game {
       game.recordResult(userInput, aiInput, result);
       game.updateUserChoices(userInput);
       game.printOutcome(result, sum, choice);
-      game.updateStrategyBasedOnDifficulty(game, difficulty, ai);
+      game.updateStrategyBasedOnDifficulty(game, difficulty, ai, userChoices, choice);
     }
   }
 

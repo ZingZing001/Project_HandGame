@@ -1,5 +1,7 @@
 package nz.ac.auckland.se281;
 
+import java.util.ArrayList;
+
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 
@@ -56,7 +58,7 @@ public class GameController extends Game {
     }
   }
 
-  public void updateStrategyBasedOnDifficulty(Game game, Difficulty difficulty, AiPlayer ai) {
+  public void updateStrategyBasedOnDifficulty(Game game, Difficulty difficulty, AiPlayer ai, ArrayList<Choice> userChoices, Choice gameChoice) {
     int gamesPlayed = Integer.parseInt(getTotalGamesPlayed());
     if (gamesPlayed >= 3) {
       if (difficulty == Difficulty.MEDIUM) {
