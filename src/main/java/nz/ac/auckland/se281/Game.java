@@ -13,13 +13,13 @@ public class Game {
   protected int sum;
   protected List<RoundResult> gameHistory = new ArrayList<>();
   protected ArrayList<Choice> userChoices = new ArrayList<>();
+  protected Choice choice;
   private final String aiName = "HAL-9000";
   private GameController game;
   private HumanPlayer user;
   private AiPlayer ai;
   private PlayerFactory playerFactory;
   private boolean result;
-  private Choice choice;
   private Difficulty difficulty;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
@@ -64,6 +64,9 @@ public class Game {
           String.valueOf(sum), String.valueOf(choice), name);
       if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
         ai.updateStrategy(new TopStrategy(userChoices, choice));
+      } else if (difficulty == Difficulty.HARD
+          && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
+        ai.swapStrategy(userChoices, choice);
       }
     }
   }

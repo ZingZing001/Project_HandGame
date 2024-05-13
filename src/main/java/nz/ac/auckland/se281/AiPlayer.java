@@ -1,6 +1,9 @@
 package nz.ac.auckland.se281;
 
-public class AiPlayer implements Player {
+import java.util.ArrayList;
+import nz.ac.auckland.se281.Main.Choice;
+
+public class AiPlayer extends Game implements Player {
   private final String name;
   private GameStrategy strategy;
   private int playerConsecutiveWins;
@@ -18,9 +21,10 @@ public class AiPlayer implements Player {
     this.strategy = strategy;
   }
 
-  public void incrementPlayerWins() {
-    playerConsecutiveWins++;
-    if (playerConsecutiveWins >= 3 && this.strategy instanceof RandomStrategy) {
+  public void swapStrategy(ArrayList<Choice> choices, Choice gameChoice) {
+    if (strategy instanceof RandomStrategy) {
+      updateStrategy(new TopStrategy(choices, gameChoice));
+    } else {
       updateStrategy(new RandomStrategy());
     }
   }
@@ -30,5 +34,9 @@ public class AiPlayer implements Player {
     aiInput = strategy.excuteStrategy();
     MessageCli.PRINT_INFO_HAND.printMessage(name, aiInput);
     return aiInput;
+  }
+
+  public GameStrategy getStrategy() {
+    return strategy;
   }
 }
