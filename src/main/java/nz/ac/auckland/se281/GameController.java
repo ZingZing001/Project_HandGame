@@ -1,12 +1,8 @@
 package nz.ac.auckland.se281;
 
-import java.util.ArrayList;
-
 import nz.ac.auckland.se281.Main.Choice;
-import nz.ac.auckland.se281.Main.Difficulty;
 
 public class GameController extends Game {
-  private final String aiName = "HAL-9000";
   private String userInput;
   private String aiInput;
   private Boolean result;
@@ -38,35 +34,6 @@ public class GameController extends Game {
     this.result = result;
     RoundResult roundHistory = new RoundResult(userInput, aiInput, result);
     gameHistory.add(roundHistory);
-  }
-
-  public void updateUserChoices(String userInput) {
-    if (Utils.isEven(Integer.parseInt(userInput))) {
-      userChoices.add(Choice.EVEN);
-    } else {
-      userChoices.add(Choice.ODD);
-    }
-  }
-
-  public void printOutcome(boolean result, int sum, Choice choice) {
-    if (!result) {
-      String parity = Utils.isEven(sum) ? "EVEN" : "ODD";
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), parity, aiName);
-    } else {
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage(
-          String.valueOf(sum), String.valueOf(choice), name);
-    }
-  }
-
-  public void updateStrategyBasedOnDifficulty(Game game, Difficulty difficulty, AiPlayer ai, ArrayList<Choice> userChoices, Choice gameChoice) {
-    int gamesPlayed = Integer.parseInt(getTotalGamesPlayed());
-    if (gamesPlayed >= 3) {
-      if (difficulty == Difficulty.MEDIUM) {
-        ai.updateStrategy(new TopStrategy(userChoices, choice));
-      } else if (difficulty == Difficulty.HARD) {
-        ai.swapStrategy(userChoices, choice);
-      }
-    }
   }
 
   public void startNewGame() {
