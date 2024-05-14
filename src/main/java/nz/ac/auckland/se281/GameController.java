@@ -79,4 +79,32 @@ public class GameController extends Game {
       return humanLoss + "";
     }
   }
+
+  public String getAiLoss(List<RoundResult> gameHistory) {
+    int aiLoss = 0;
+    if (gameHistory.isEmpty()) {
+      return aiLoss + "";
+    } else {
+      for (RoundResult history : gameHistory) {
+        if (history.isHumanWon()) {
+          aiLoss++;
+        }
+      }
+      return aiLoss + "";
+    }
+  }
+
+  public String getAiWins(List<RoundResult> gameHistory) {
+    int aiWins = 0;
+    if (gameHistory.isEmpty()) {
+      return aiWins + "";
+    } else {
+      for (RoundResult history : gameHistory) {
+        if (!history.isHumanWon()) {
+          aiWins++;
+        }
+      }
+      return aiWins + "";
+    }
+  }
 }
