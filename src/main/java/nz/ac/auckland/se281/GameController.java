@@ -34,7 +34,7 @@ public class GameController extends Game {
     this.userInput = userInput;
     this.aiInput = aiInput;
     this.result = result;
-    roundHistory = new RoundResult(userInput, aiInput, result);
+    roundHistory = new RoundResult(result);
     gameHistory.add(roundHistory);
   }
 
