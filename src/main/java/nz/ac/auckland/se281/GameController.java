@@ -54,11 +54,15 @@ public class GameController extends Game {
 
   public String getPlayerWins(List<RoundResult> gameHistory) {
     int humanWins = 0;
-    for (RoundResult history : gameHistory) {
-      if (history.isHumanWon()) {
-        humanWins++;
+    if (gameHistory.isEmpty()) {
+      return humanWins + "";
+    } else {
+      for (RoundResult history : gameHistory) {
+        if (history.isHumanWon()) {
+          humanWins++;
+        }
       }
+      return humanWins + "";
     }
-    return humanWins + "";
   }
 }
