@@ -78,10 +78,10 @@ public class Game {
     if (this.game == null || !game.isGameStarted()) {
       MessageCli.GAME_NOT_STARTED.printMessage();
     } else {
-      game.resetGame();
       int humanWins = Integer.parseInt(game.getPlayerWins(gameHistory));
       int aiWins = Integer.parseInt(game.getAiWins(gameHistory));
       showStats();
+      game.resetGame();
       if (humanWins > aiWins) {
         MessageCli.PRINT_END_GAME.printMessage(name);
       } else if (aiWins > humanWins) {
