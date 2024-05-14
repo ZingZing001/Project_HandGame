@@ -32,10 +32,11 @@ public class Game {
     user = new HumanPlayer(name);
     ai = PlayerFactory.creatPlayer(difficulty);
     user.Greet();
+    game.setGameStarted(true);
   }
 
   public void play() {
-    if (this.game == null) {
+    if (this.game == null || !game.isGameStarted()) {
       MessageCli.GAME_NOT_STARTED.printMessage();
     } else {
       game.startNewGame();
@@ -74,9 +75,10 @@ public class Game {
   }
 
   public void endGame() {
-    if (this.game == null) {
+    if (this.game == null || !game.isGameStarted()) {
       MessageCli.GAME_NOT_STARTED.printMessage();
     } else {
+      game.resetGame();
       int humanWins = Integer.parseInt(game.getPlayerWins(gameHistory));
       int aiWins = Integer.parseInt(game.getAiWins(gameHistory));
       showStats();
@@ -91,7 +93,7 @@ public class Game {
   }
 
   public void showStats() {
-    if (this.game == null) {
+    if (this.game == null || !game.isGameStarted()) {
       MessageCli.GAME_NOT_STARTED.printMessage();
     } else {
       MessageCli.PRINT_PLAYER_WINS.printMessage(

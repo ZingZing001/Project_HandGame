@@ -9,9 +9,11 @@ public class GameController extends Game {
   private Boolean result;
   private int totalGamePlayed;
   private RoundResult roundHistory;
+  private Boolean gameStarted;
 
   public GameController() {
     this.totalGamePlayed = 0;
+    this.gameStarted = false;
   }
 
   public boolean PlayerWins(String userInput, String aiInput, Choice choice) {
@@ -40,11 +42,13 @@ public class GameController extends Game {
   }
 
   public void startNewGame() {
+    gameStarted = true;
     totalGamePlayed++;
     MessageCli.START_ROUND.printMessage(totalGamePlayed + "");
   }
 
   public void resetGame() {
+    gameStarted = false;
     totalGamePlayed = 0;
   }
 
@@ -106,5 +110,13 @@ public class GameController extends Game {
       }
       return aiWins + "";
     }
+  }
+
+  public Boolean isGameStarted() {
+    return gameStarted;
+  }
+
+  public void setGameStarted(Boolean gameStarted) {
+    this.gameStarted = gameStarted;
   }
 }
