@@ -11,27 +11,7 @@ public class RoundResult extends Game {
     this.humanWon = humanWon;
   }
 
-  public String getHumanMove() {
-    return humanMove;
-  }
-
-  public void setHumanMove(String humanMove) {
-    this.humanMove = humanMove;
-  }
-
-  public String getAiMove() {
-    return aiMove;
-  }
-
-  public void setAiMove(String aiMove) {
-    this.aiMove = aiMove;
-  }
-
   public boolean isHumanWon() {
     return humanWon;
-  }
-
-  public void setHumanWon(boolean humanWon) {
-    this.humanWon = humanWon;
   }
 }
