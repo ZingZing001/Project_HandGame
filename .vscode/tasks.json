@@ -1,29 +1,41 @@
 {
-	"version": "2.0.0",
-	"tasks": [
-		{
-			"label": "run program",
-			"type": "shell",
-			"command": "./mvnw clean compile exec:java@run",
-			"windows": {
-				"command": ".\\mvnw.cmd clean compile exec:java@run"
-			},
-			"group": {
-				"kind": "build",
-				"isDefault": true
-			}
-		},
-		{
-			"label": "run tests",
-			"type": "shell",
-			"command": "./mvnw clean compile test",
-			"windows": {
-				"command": ".\\mvnw.cmd clean compile test"
-			},
-			"group": {
-				"kind": "test",
-				"isDefault": true
-			}
-		}
-	]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Run Program",
+      "type": "shell",
+      "command": "./mvnw clean compile exec:java@run",
+      "windows": {
+        "command": ".\\mvnw.cmd clean compile exec:java@run"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run Tests",
+      "type": "shell",
+      "command": "./mvnw clean compile test",
+      "windows": {
+        "command": ".\\mvnw.cmd clean compile test"
+      },
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      }
+    },
+    {
+      "label": "Run Style",
+      "type": "shell",
+      "command": "./mvnw clean compile exec:java@style",
+      "windows": {
+        "command": ".\\mvnw.cmd clean compile test"
+      },
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      }
+    }
+  ]
 }
