@@ -65,4 +65,18 @@ public class GameController extends Game {
       return humanWins + "";
     }
   }
+
+  public String getPlayerLoss(List<RoundResult> gameHistory) {
+    int humanLoss = 0;
+    if (gameHistory.isEmpty()) {
+      return humanLoss + "";
+    } else {
+      for (RoundResult history : gameHistory) {
+        if (!history.isHumanWon()) {
+          humanLoss++;
+        }
+      }
+      return humanLoss + "";
+    }
+  }
 }

@@ -79,6 +79,8 @@ public class Game {
     if (this.game == null) {
       MessageCli.GAME_NOT_STARTED.printMessage();
     } else {
+      MessageCli.PRINT_PLAYER_WINS.printMessage(
+          name, game.getPlayerWins(gameHistory), game.getPlayerLoss(gameHistory));
     }
   }
 }
