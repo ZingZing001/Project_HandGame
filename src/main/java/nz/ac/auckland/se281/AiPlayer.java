@@ -6,13 +6,10 @@ import nz.ac.auckland.se281.Main.Choice;
 public class AiPlayer extends Game implements Player {
   private final String name;
   private GameStrategy strategy;
-  private int playerConsecutiveWins;
   private String aiInput;
-  private Game game;
 
   public AiPlayer(GameStrategy strategy) {
     name = "HAL-9000";
-    playerConsecutiveWins = 0;
     this.strategy = strategy;
   }
 
