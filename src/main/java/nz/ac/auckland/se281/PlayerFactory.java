@@ -3,22 +3,16 @@ package nz.ac.auckland.se281;
 import nz.ac.auckland.se281.Main.Difficulty;
 
 public class PlayerFactory {
-  private Game game;
-
-  public PlayerFactory(Game game) {
-    this.game = game;
-  }
-
-  public AiPlayer creatPlayer(Difficulty difficulty) {
+  public static AiPlayer creatPlayer(Difficulty difficulty) {
     switch (difficulty) {
       case EASY:
-        return new AiPlayer(new RandomStrategy(), game);
+        return new AiPlayer(new RandomStrategy());
       case MEDIUM:
-        return new AiPlayer(new RandomStrategy(), game);
+        return new AiPlayer(new RandomStrategy());
       case HARD:
-        return new AiPlayer(new RandomStrategy(), game);
+        return new AiPlayer(new RandomStrategy());
       default:
-        return new AiPlayer(new RandomStrategy(), game);
+        return new AiPlayer(new RandomStrategy());
     }
   }
 }

@@ -31,8 +31,8 @@ public class Game {
     game.resetGame();
     name = options[0];
     user = new HumanPlayer(name);
-    playerFactory = new PlayerFactory(game);
-    ai = playerFactory.creatPlayer(difficulty);
+    playerFactory = new PlayerFactory();
+    ai = PlayerFactory.creatPlayer(difficulty);
     user.Greet();
   }
 

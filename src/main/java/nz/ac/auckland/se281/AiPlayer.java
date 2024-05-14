@@ -10,8 +10,7 @@ public class AiPlayer extends Game implements Player {
   private String aiInput;
   private Game game;
 
-  public AiPlayer(GameStrategy strategy, Game game) {
-    this.game = game;
+  public AiPlayer(GameStrategy strategy) {
     name = "HAL-9000";
     playerConsecutiveWins = 0;
     this.strategy = strategy;
