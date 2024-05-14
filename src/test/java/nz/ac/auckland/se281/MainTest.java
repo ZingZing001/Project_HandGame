@@ -777,4 +777,15 @@ public class MainTest {
               .contains(PRINT_PLAYER_WINS.getMessage("HAL-9000", "2", "0")));
     }
   }
+
+  @FixMethodOrder(MethodSorters.NAME_ASCENDING)
+  public static class YourTests extends CliTest {
+
+    public YourTests() {
+      super(Main.class);
+    }
+
+    @Test
+    public void yourtest() throws Exception {}
+  }
 }
