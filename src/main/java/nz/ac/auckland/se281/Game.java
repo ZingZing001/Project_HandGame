@@ -81,7 +81,8 @@ public class Game {
     } else {
       MessageCli.PRINT_PLAYER_WINS.printMessage(
           name, game.getPlayerWins(gameHistory), game.getPlayerLoss(gameHistory));
-      MessageCli.PRINT_PLAYER_WINS.printMessage(aiName);
+      MessageCli.PRINT_PLAYER_WINS.printMessage(
+          aiName, game.getAiWins(gameHistory), game.getAiLoss(gameHistory));
     }
   }
 }
