@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+import java.util.List;
 import nz.ac.auckland.se281.Main.Choice;
 
 public class GameController extends Game {
@@ -7,6 +8,7 @@ public class GameController extends Game {
   private String aiInput;
   private Boolean result;
   private int totalGamePlayed;
+  private RoundResult roundHistory;
 
   public GameController() {
     this.totalGamePlayed = 0;
@@ -28,11 +30,12 @@ public class GameController extends Game {
     }
   }
 
-  public void recordResult(String userInput, String aiInput, Boolean result) {
+  public void recordResult(
+      String userInput, String aiInput, Boolean result, List<RoundResult> gameHistory) {
     this.userInput = userInput;
     this.aiInput = aiInput;
     this.result = result;
-    RoundResult roundHistory = new RoundResult(userInput, aiInput, result);
+    roundHistory = new RoundResult(userInput, aiInput, result);
     gameHistory.add(roundHistory);
   }
 
@@ -47,5 +50,15 @@ public class GameController extends Game {
 
   public String getTotalGamesPlayed() {
     return "" + totalGamePlayed;
+  }
+
+  public String getPlayerWins(List<RoundResult> gameHistory) {
+    int humanWins = 0;
+    for (RoundResult history : gameHistory) {
+      if (history.isHumanWon()) {
+        humanWins++;
+      }
+    }
+    return humanWins + "";
   }
 }

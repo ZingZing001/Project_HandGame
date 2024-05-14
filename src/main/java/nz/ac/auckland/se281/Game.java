@@ -43,7 +43,7 @@ public class Game {
       aiInput = ai.makeMove();
       sum = Integer.parseInt(userInput) + Integer.parseInt(aiInput);
       result = game.PlayerWins(userInput, aiInput, choice);
-      game.recordResult(userInput, aiInput, result);
+      game.recordResult(userInput, aiInput, result, gameHistory);
       if (Utils.isEven(Integer.parseInt(userInput))) {
         userChoices.add(Choice.EVEN);
       } else {
@@ -75,5 +75,10 @@ public class Game {
 
   public void endGame() {}
 
-  public void showStats() {}
+  public void showStats() {
+    if (this.game == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+    } else {
+    }
+  }
 }
