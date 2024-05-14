@@ -7,6 +7,7 @@ import nz.ac.auckland.se281.Main.Difficulty;
 
 /** This class represents the Game is the main entry point. */
 public class Game {
+  private final String aiName = "HAL-9000";
   protected String name;
   protected String userInput;
   protected String aiInput;
@@ -14,11 +15,10 @@ public class Game {
   protected List<RoundResult> gameHistory = new ArrayList<>();
   protected ArrayList<Choice> userChoices = new ArrayList<>();
   protected Choice choice;
-  private final String aiName = "HAL-9000";
+  protected boolean result;
   private GameController game;
   private HumanPlayer user;
   private AiPlayer ai;
-  private boolean result;
   private Difficulty difficulty;
 
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {

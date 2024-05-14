@@ -4,9 +4,6 @@ import java.util.List;
 import nz.ac.auckland.se281.Main.Choice;
 
 public class GameController extends Game {
-  private String userInput;
-  private String aiInput;
-  private Boolean result;
   private int totalGamePlayed;
   private RoundResult roundHistory;
   private Boolean gameStarted;
