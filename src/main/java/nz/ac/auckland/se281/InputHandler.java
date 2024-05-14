@@ -1,7 +1,7 @@
 package nz.ac.auckland.se281;
 
 public class InputHandler {
-  String input;
+  private String input;
 
   public String propmtForFirstCharacter() {
     input = Utils.scanner.nextLine();
