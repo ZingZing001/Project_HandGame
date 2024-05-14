@@ -18,7 +18,6 @@ public class Game {
   private GameController game;
   private HumanPlayer user;
   private AiPlayer ai;
-  private PlayerFactory playerFactory;
   private boolean result;
   private Difficulty difficulty;
 
@@ -31,7 +30,6 @@ public class Game {
     game.resetGame();
     name = options[0];
     user = new HumanPlayer(name);
-    playerFactory = new PlayerFactory();
     ai = PlayerFactory.creatPlayer(difficulty);
     user.Greet();
   }
