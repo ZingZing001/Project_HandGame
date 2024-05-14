@@ -30,7 +30,7 @@
       "type": "shell",
       "command": "./mvnw clean compile exec:java@style",
       "windows": {
-        "command": ".\\mvnw.cmd clean compile test"
+        "command": ".\\mvnw.cmd clean compile exec:java@style"
       },
       "group": {
         "kind": "build",
