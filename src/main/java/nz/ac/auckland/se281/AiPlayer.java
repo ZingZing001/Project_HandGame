@@ -31,8 +31,4 @@ public class AiPlayer extends Game implements Player {
     MessageCli.PRINT_INFO_HAND.printMessage(name, aiInput);
     return aiInput;
   }
-
-  public GameStrategy getStrategy() {
-    return strategy;
-  }
 }
