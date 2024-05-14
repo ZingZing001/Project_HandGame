@@ -73,7 +73,22 @@ public class Game {
     }
   }
 
-  public void endGame() {}
+  public void endGame() {
+    if (this.game == null) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+    } else {
+      int humanWins = Integer.parseInt(game.getPlayerWins(gameHistory));
+      int aiWins = Integer.parseInt(game.getAiWins(gameHistory));
+      showStats();
+      if (humanWins > aiWins) {
+        MessageCli.PRINT_END_GAME.printMessage(name);
+      } else if (aiWins > humanWins) {
+        MessageCli.PRINT_END_GAME.printMessage(aiName);
+      } else {
+        MessageCli.PRINT_END_GAME_TIE.printMessage();
+      }
+    }
+  }
 
   public void showStats() {
     if (this.game == null) {
