@@ -45,32 +45,8 @@ public class Game {
       sum = Integer.parseInt(userInput) + Integer.parseInt(aiInput);
       result = game.PlayerWins(userInput, aiInput, choice);
       game.recordResult(userInput, aiInput, result, gameHistory);
-      if (Utils.isEven(Integer.parseInt(userInput))) {
-        userChoices.add(Choice.EVEN);
-      } else {
-        userChoices.add(Choice.ODD);
-      }
-
-      if (!result && Utils.isEven(sum)) {
-        MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "EVEN", aiName);
-        if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
-          ai.updateStrategy(new TopStrategy(userChoices, choice));
-        }
-      } else if (!result && Utils.isOdd(sum)) {
-        MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "ODD", aiName);
-        if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
-          ai.updateStrategy(new TopStrategy(userChoices, choice));
-        }
-      } else {
-        MessageCli.PRINT_OUTCOME_ROUND.printMessage(
-            String.valueOf(sum), String.valueOf(choice), name);
-        if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
-          ai.updateStrategy(new TopStrategy(userChoices, choice));
-        } else if (difficulty == Difficulty.HARD
-            && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
-          ai.swapStrategy(userChoices, choice);
-        }
-      }
+      updateUserChoices(userInput);
+      printOutcome(result, sum, choice);
     }
   }
 
@@ -100,6 +76,37 @@ public class Game {
           name, game.getPlayerWins(gameHistory), game.getPlayerLoss(gameHistory));
       MessageCli.PRINT_PLAYER_WINS.printMessage(
           aiName, game.getAiWins(gameHistory), game.getAiLoss(gameHistory));
+    }
+  }
+
+  private void updateUserChoices(String userInput) {
+    if (Utils.isEven(Integer.parseInt(userInput))) {
+      userChoices.add(Choice.EVEN);
+    } else {
+      userChoices.add(Choice.ODD);
+    }
+  }
+
+  private void printOutcome(boolean result, int sum, Choice choice) {
+    if (!result && Utils.isEven(sum)) {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "EVEN", aiName);
+      if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
+        ai.updateStrategy(new TopStrategy(userChoices, choice));
+      }
+    } else if (!result && Utils.isOdd(sum)) {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(String.valueOf(sum), "ODD", aiName);
+      if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
+        ai.updateStrategy(new TopStrategy(userChoices, choice));
+      }
+    } else {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage(
+          String.valueOf(sum), String.valueOf(choice), name);
+      if (difficulty == Difficulty.MEDIUM && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
+        ai.updateStrategy(new TopStrategy(userChoices, choice));
+      } else if (difficulty == Difficulty.HARD
+          && Integer.parseInt(game.getTotalGamesPlayed()) >= 3) {
+        ai.swapStrategy(userChoices, choice);
+      }
     }
   }
 }
