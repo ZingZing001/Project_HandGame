@@ -22,11 +22,11 @@ public class Game {
   private Difficulty difficulty;
 
   /**
-   * COMMAND to initialise and start a new game
+   * COMMAND to initialise and start a new game.
    *
-   * @param difficulty difficulty of the game chosen by the user
-   * @param choice ODD or EVEN chosen by the user
-   * @param options User's Name
+   * @param difficulty difficulty of the game chosen by the user.
+   * @param choice ODD or EVEN chosen by the user.
+   * @param options User's Name.
    */
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     this.choice = choice;
@@ -42,7 +42,7 @@ public class Game {
     game.setGameStarted(true);
   }
 
-  /** COMMAND to play the game with the current user profile */
+  /** COMMAND to play the game with the current user profile. */
   public void play() {
     if (this.game == null || !game.isGameStarted()) {
       MessageCli.GAME_NOT_STARTED.printMessage();
@@ -58,7 +58,7 @@ public class Game {
     }
   }
 
-  /** COMMAND to end the gameand display the round stats and who won the game */
+  /** COMMAND to end the gameand display the round stats and who won the game. */
   public void endGame() {
     if (this.game == null || !game.isGameStarted()) {
       MessageCli.GAME_NOT_STARTED.printMessage();
@@ -77,7 +77,7 @@ public class Game {
     }
   }
 
-  /** COMMAND to show the stats of the current game */
+  /** COMMAND to show the stats of the current game. */
   public void showStats() {
     if (this.game == null || !game.isGameStarted()) {
       MessageCli.GAME_NOT_STARTED.printMessage();
@@ -90,9 +90,9 @@ public class Game {
   }
 
   /**
-   * Records what did the user input and categories them as ODD or EVEN based on the integer value
+   * Records what did the user input and categories them as ODD or EVEN based on the integer value.
    *
-   * @param userInput Input from the user
+   * @param userInput Input from the user.
    */
   private void updateUserChoices(String userInput) {
     if (Utils.isEven(Integer.parseInt(userInput))) {
@@ -103,11 +103,11 @@ public class Game {
   }
 
   /**
-   * Prints the stats of the current round, and update ai strategy accordinly
+   * Prints the stats of the current round, and update ai strategy accordinly.
    *
-   * @param result The result of the game, gives the output of who won the game
-   * @param sum The sum of the Inputs from both user and the ai
-   * @param choice The EVEN or ODD choice made by the user at the start of the game
+   * @param result The result of the game, gives the output of who won the game.
+   * @param sum The sum of the Inputs from both user and the ai.
+   * @param choice The EVEN or ODD choice made by the user at the start of the game.
    */
   private void printOutcome(boolean result, int sum, Choice choice) {
     if (!result && Utils.isEven(sum)) {
