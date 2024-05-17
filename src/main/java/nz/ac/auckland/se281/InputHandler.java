@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+/** Class for validify inputs from the user */
 public class InputHandler {
   private String input;
 
