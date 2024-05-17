@@ -5,49 +5,55 @@ import java.util.List;
 import nz.ac.auckland.se281.Main.Choice;
 import nz.ac.auckland.se281.Main.Difficulty;
 
-/** This class represents the Game is the main entry point. */
+/**
+ * Represents the game's main entry point. This class handles the game lifecycle including starting,
+ * playing, and ending the game, as well as managing game state and player interactions.
+ */
 public class Game {
   private final String aiName = "HAL-9000";
-  protected String name;
-  protected String userInput;
-  protected String aiInput;
-  protected int sum;
-  protected List<RoundResult> gameHistory = new ArrayList<>();
-  protected ArrayList<Choice> userChoices = new ArrayList<>();
-  protected Choice choice;
-  protected boolean result;
-  private GameController game;
-  private HumanPlayer user;
-  private AiPlayer ai;
-  private Difficulty difficulty;
+  protected String name; // Player's name
+  protected String userInput; // Last input from the human player
+  protected String aiInput; // Last input from the AI player
+  protected int sum; // Sum of fingers played in the current round
+  protected List<RoundResult> gameHistory = new ArrayList<>(); // History of all rounds played
+  protected ArrayList<Choice> userChoices =
+      new ArrayList<>(); // Historical list of choices made by the user
+  protected Choice choice; // Current choice of the user, either ODD or EVEN
+  protected boolean result; // Result of the current round, true if user wins
+  private GameController game; // Game controller managing game logic and state
+  private HumanPlayer user; // Human player instance
+  private AiPlayer ai; // AI player instance
+  private Difficulty difficulty; // Difficulty level of the game
 
   /**
-   * COMMAND to initialise and start a new game.
+   * Initializes and starts a new game session. Sets up players, game state, and initial conditions
+   * based on user input.
    *
-   * @param difficulty difficulty of the game chosen by the user.
-   * @param choice ODD or EVEN chosen by the user.
-   * @param options User's Name.
+   * @param difficulty The difficulty level of the game, affecting AI behavior.
+   * @param choice The initial choice (ODD or EVEN) that determines winning conditions.
+   * @param options Contains player-specific options such as player names.
    */
   public void newGame(Difficulty difficulty, Choice choice, String[] options) {
     this.choice = choice;
     this.difficulty = difficulty;
-    ai = PlayerFactory.creatPlayer(difficulty);
     gameHistory = new ArrayList<>();
     userChoices = new ArrayList<>();
     game = new GameController();
-    game.resetGame();
+    game.resetGame(); // Ensure the game is in a clean state
     name = options[0];
     user = new HumanPlayer(name);
-    user.Greet();
+    ai =
+        PlayerFactory.creatPlayer(difficulty); // Create an AI player based on the chosen difficulty
+    user.Greet(); // Display a greeting to the user
     game.setGameStarted(true);
   }
 
-  /** COMMAND to play the game with the current user profile. */
+  /** Processes a single round of play, including making moves and determining the round outcome. */
   public void play() {
     if (this.game == null || !game.isGameStarted()) {
-      MessageCli.GAME_NOT_STARTED.printMessage();
+      MessageCli.GAME_NOT_STARTED.printMessage(); // Ensure the game has been properly started
     } else {
-      game.startNewGame();
+      game.startNewGame(); // Prepare the game for a new round
       userInput = user.makeMove();
       aiInput = ai.makeMove();
       sum = Integer.parseInt(userInput) + Integer.parseInt(aiInput);
@@ -58,26 +64,29 @@ public class Game {
     }
   }
 
-  /** COMMAND to end the gameand display the round stats and who won the game. */
+  /**
+   * Ends the current game, displays the final outcome, and resets the game for a possible new
+   * session.
+   */
   public void endGame() {
     if (this.game == null || !game.isGameStarted()) {
       MessageCli.GAME_NOT_STARTED.printMessage();
     } else {
       int humanWins = Integer.parseInt(game.getPlayerWins(gameHistory));
       int aiWins = Integer.parseInt(game.getAiWins(gameHistory));
-      showStats();
-      game.resetGame();
+      showStats(); // Display game statistics
+      game.resetGame(); // Reset game state
       if (humanWins > aiWins) {
-        MessageCli.PRINT_END_GAME.printMessage(name);
+        MessageCli.PRINT_END_GAME.printMessage(name); // User wins
       } else if (aiWins > humanWins) {
-        MessageCli.PRINT_END_GAME.printMessage(aiName);
+        MessageCli.PRINT_END_GAME.printMessage(aiName); // AI wins
       } else {
-        MessageCli.PRINT_END_GAME_TIE.printMessage();
+        MessageCli.PRINT_END_GAME_TIE.printMessage(); // Tie game
       }
     }
   }
 
-  /** COMMAND to show the stats of the current game. */
+  /** Displays statistics of the current game session including the number of wins and losses. */
   public void showStats() {
     if (this.game == null || !game.isGameStarted()) {
       MessageCli.GAME_NOT_STARTED.printMessage();
@@ -90,9 +99,11 @@ public class Game {
   }
 
   /**
-   * Records what did the user input and categories them as ODD or EVEN based on the integer value.
+   * Records the user's choice (ODD or EVEN) based on the integer value of the input and adds it to
+   * the history.
    *
-   * @param userInput Input from the user.
+   * @param userInput The last move made by the user, expected to be a string that can be parsed as
+   *     an integer.
    */
   private void updateUserChoices(String userInput) {
     if (Utils.isEven(Integer.parseInt(userInput))) {
@@ -103,11 +114,12 @@ public class Game {
   }
 
   /**
-   * Prints the stats of the current round, and update ai strategy accordinly.
+   * Prints the outcome of the current round and updates AI strategy if necessary based on the
+   * game's progress.
    *
-   * @param result The result of the game, gives the output of who won the game.
-   * @param sum The sum of the Inputs from both user and the ai.
-   * @param choice The EVEN or ODD choice made by the user at the start of the game.
+   * @param result The result of the current round, true if the user wins.
+   * @param sum The sum of fingers played by the user and AI in the current round.
+   * @param choice The user's initial choice of ODD or EVEN, which determines the winning condition.
    */
   private void printOutcome(boolean result, int sum, Choice choice) {
     if (!result && Utils.isEven(sum)) {
