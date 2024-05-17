@@ -8,8 +8,10 @@ import nz.ac.auckland.se281.Main.Difficulty;
  */
 public class PlayerFactory {
   /**
-   * @param difficulty Difficulty selected by the user
-   * @return A new AiPlayer equipped with default strategy and selected difficulty
+   * Generates AiPlayer profile with different strategy.
+   *
+   * @param difficulty Difficulty selected by the user.
+   * @return A new AiPlayer equipped with default strategy and selected difficulty.
    */
   public static AiPlayer creatPlayer(Difficulty difficulty) {
     switch (difficulty) {
