@@ -32,11 +32,11 @@ To run the Odds and Evens hand game locally, follow these steps:
    
 4. Run the program:
    ```sh
-    ./mvnw clean compile exec:java
+    ./mvnw clean compile exec:java@run
    ```  
     For Windows:
    ```sh
-    .\mvnw.cmd clean compile exec:java
+    .\mvnw.cmd clean compile exec:java@run
    ```
 ## Gameplay
 ### Objective
